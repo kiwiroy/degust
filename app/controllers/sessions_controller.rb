@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:create_ldap]
 
   def new
     redirect_to '/auth/twitter'
@@ -14,6 +15,10 @@ class SessionsController < ApplicationController
 
     page = request.env['omniauth.origin'] || root_url
     redirect_to page, :notice => 'Signed in!'
+  end
+
+  def create_ldap
+    create
   end
 
   def destroy

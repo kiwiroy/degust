@@ -33,6 +33,10 @@
           %a.btn.btn-block.btn-social.btn-github{:href => "/auth/github"}
             %span.fa.fa-github
             Sign in with GitHub
+        - if ENV.include?("LDAP_PROVIDER_NAME")
+          %a.btn.btn-block.btn-social.btn-microsoft{:href => "/auth/ldap"}
+            %span.fa.fa-id-badge
+            Sign in with #{ENV["LDAP_PROVIDER_NAME"]}
     -#.col-md-4
   -#.row
 

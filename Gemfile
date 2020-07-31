@@ -31,6 +31,12 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'simple_form'
 
+# LDAP Auth
+# GitLab fork with several improvements to original library. For full list of changes
+# see https://github.com/intridea/omniauth-ldap/compare/master...gitlabhq:master
+gem 'gitlab_omniauth-ldap', '~> 2.1.1', require: 'omniauth-ldap'
+gem 'net-ldap'
+
 gem 'browser-timezone-rails'
 #gem 'rails-backup-migrate'
 
