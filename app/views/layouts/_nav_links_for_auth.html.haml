@@ -27,6 +27,9 @@
       - if ENV.include?("GITHUB_PROVIDER_KEY")
         %li
           = link_to "Via GitHub", "/auth/github"
+      - if ENV.include?("AZUREAD_PROVIDER_KEY")
+        %li
+          = link_to "Via Azure AD", "/auth/azureactivedirectory"
   - else
     %li.dropdown
       %a.dropdown-toggle{"data-toggle"=>"dropdown","role"=>"button","aria-haspopup"=>"true", "aria-expanded"=>"false" }
@@ -43,3 +46,6 @@
         - if ENV.include?("GITHUB_PROVIDER_KEY")
           %li
             = link_to "Via GitHub", "/auth/github"
+        - if ENV.include?("AZUREAD_PROVIDER_KEY")
+          %li
+            = link_to "Via Azure AD", "/auth/azureactivedirectory"

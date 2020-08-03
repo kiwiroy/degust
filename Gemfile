@@ -29,6 +29,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
+gem 'omniauth-azure-activedirectory'
 gem 'simple_form'
 
 gem 'browser-timezone-rails'
