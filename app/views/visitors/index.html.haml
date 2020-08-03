@@ -33,6 +33,10 @@
           %a.btn.btn-block.btn-social.btn-github{:href => "/auth/github"}
             %span.fa.fa-github
             Sign in with GitHub
+        - if ENV.include?("AZUREAD_PROVIDER_KEY")
+          %a.btn.btn-block.btn-social.btn-microsoft{:href => "/auth/azureactivedirectory"}
+            %span.fa.fa-windows
+            Sign in with Azure AD
     -#.col-md-4
   -#.row
 
