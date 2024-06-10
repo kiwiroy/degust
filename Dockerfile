@@ -15,9 +15,10 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs r-base \
     && rm -rf /var/lib/apt/lists/*
 
-# Install R libs - locfit is a dep of edgeR and later versions req 4.1
-RUN Rscript -e "install.packages('https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.4.tar.gz', repos = NULL, type = 'source')"
-RUN Rscript -e "install.packages(c('BiocManager','jsonlite')); BiocManager::install(version='3.9', ask=F); BiocManager::install(c('limma','edgeR','topconfects', 'RUVSeq'))"
+# Install R libs - locfit is a dep of edgeR and later versions req 4.1, XML of RUVSeq
+RUN Rscript -e "install.packages('https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.4.tar.gz', repos = NULL, type = 'source'); stopifnot(require('locfit'))"
+RUN Rscript -e "install.packages('https://cran.r-project.org/src/contrib/Archive/XML/XML_3.99-0.3.tar.gz', repos = NULL, type = 'source'); stopifnot(require('XML'))"
+RUN Rscript -e "install.packages(c('BiocManager','jsonlite')); BiocManager::install(version='3.9', ask=F); x <- c('limma','edgeR','topconfects', 'RUVSeq'); BiocManager::install(x); stopifnot(as.logical(lapply(x, require, character = TRUE)))"
 
 
 ENV RAILS_ENV=production
